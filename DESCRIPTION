@@ -10,7 +10,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/ericgyoung/libminer
+URL: https://github.com/ericgyoung/libminer,
+    https://ericgyoung.github.io/libminer/
 BugReports: https://github.com/ericgyoung/libminer/issues
 Suggests: 
     testthat (>= 3.0.0)
