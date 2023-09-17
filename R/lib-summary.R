@@ -3,14 +3,27 @@
 #' Summarizes R libraries on the local machine, including number of
 #' packages installed.
 #'
+#' @param sizes logical indicating whether or not to calculate sizes of libraries. Default `FALSE`.
+#'
 #' @return A `data.frame` containing the count of packages in each of the user's
 #' libraries
 #' @export
 #' @examples lib_summary()
-lib_summary <- function() {
+lib_summary <- function(sizes = FALSE) {
+  if ( !is.logical(sizes) ) { stop("'sizes' must be logical: TRUE or FALSE") }
+
   pkgs <- utils::installed.packages()
   pkg_tbl <- table(pkgs[, "LibPath"])
   pkg_df <- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)
   names(pkg_df) <- c("Library", "n_packages")
-  pkg_df
+
+  if (sizes) {
+    pkg_df$lib_size = sapply(pkg_df$Library,
+                             function(x) {
+                               sum(fs::file_size(fs::dir_ls(x, recurse = TRUE)))
+                               }
+    )
+  }
+
+  return(pkg_df)
 }

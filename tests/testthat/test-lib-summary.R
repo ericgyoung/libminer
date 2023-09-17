@@ -14,5 +14,11 @@ test_that("lib_summary returns expected result", {
 })
 
 test_that("lib_summary fails appropriately", {
-  expect_error(lib_summary("foo"), "unused arg")
+  expect_error(lib_summary("foo"), "'sizes' must be logical")
+})
+
+test_that("sizes argument works", {
+  result = lib_summary(sizes = TRUE)
+  expect_equal(names(result), c("Library", "n_packages", "lib_size"))
+  expect_type(result$lib_size, "double")
 })
