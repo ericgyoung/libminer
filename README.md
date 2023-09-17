@@ -137,3 +137,10 @@ Description
 
 use_test()
 
+# Dependencies
+
+Add package to DESCRIPTION file in Imports
+call fxn like package::fun()
+
+major benefit is the code makes it easy to remember where all functions come from, and reduces name conflicts
+
