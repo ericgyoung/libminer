@@ -15,7 +15,7 @@ You can install the development version of libminer from
 
 ``` r
 # install.packages("devtools")
-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
+
 devtools::install_github("ericgyoung/libminer")
 ```
 
